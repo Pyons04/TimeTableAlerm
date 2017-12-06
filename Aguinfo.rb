@@ -1,11 +1,10 @@
 class Aguinfo
 
- def self.throw_tweet(t,get_no_class,get_1_class,get_2_class,get_3_class,get_4_class,get_5_class,info_1_class,info_2_class,info_3_class,info_4_class,info_5_class)
+ def self.throw_tweet(t,get_no_class,get_1_class,get_2_class,get_3_class,get_4_class,get_5_class,info_1_class,info_2_class,info_3_class,info_4_class,info_5_class,get_information)
 
     require 'twitter'
     require 'dotenv'
     require 'rails'
-
 
 #各時限に教科名が入っていなかった場合、改行コードだけを加える。
         get_1_class="\n" if get_1_class.blank?
@@ -69,7 +68,7 @@ class Aguinfo
 #アカウントのAPI承認実行終わり。
 #投稿する文面の作成
     puts("------------------------tweet_content----------------------------")
-    tweet_message=("明日は"+get_no_class.to_s+"です。\n"+"一限目"+get_1_class.to_s+"二限目"+get_2_class.to_s+"三限目"+get_3_class.to_s+"四限目"+get_4_class.to_s+"五限目"+get_5_class.to_s+"\n"+message_1_class.to_s+message_2_class.to_s+message_3_class.to_s+message_4_class.to_s+message_5_class.to_s+"\n"+t.to_s+"にポータルより取得しました。")
+    tweet_message=("明日は"+get_information.to_s+get_no_class.to_s+"です。\n"+"一限目"+get_1_class.to_s+"二限目"+get_2_class.to_s+"三限目"+get_3_class.to_s+"四限目"+get_4_class.to_s+"五限目"+get_5_class.to_s+"\n"+message_1_class.to_s+message_2_class.to_s+message_3_class.to_s+message_4_class.to_s+message_5_class.to_s+"\n"+t.to_s+"にポータルより取得しました。")
     puts(tweet_message)
     puts("--------------------------tweet_contant--------------------------")
 #投稿する文面の作成終わり
@@ -164,7 +163,7 @@ target_tags_5=tags.select{|item| item.include? ('cph_content_rptJikanwari_Linkbu
       end
 
 #取得時間、1～５限目までの科目名、１～５限目までの表の塗りつぶしの色をthrow_tweetメソッドに引数として渡す。
-    throw_tweet(t,get_no_class,get_1_class,get_2_class,get_3_class,get_4_class,get_5_class,info_1_class,info_2_class,info_3_class,info_4_class,info_5_class)
+    throw_tweet(t,get_no_class,get_1_class,get_2_class,get_3_class,get_4_class,get_5_class,info_1_class,info_2_class,info_3_class,info_4_class,info_5_class,get_information)
     end
 
 
