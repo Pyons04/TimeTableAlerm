@@ -1,0 +1,7 @@
+applications:
+- services:
+  - aoyamaportal_API
+  name: aoyamaportal_API
+  command: ruby Aguinfo.rb
+  path: .
+  memory: 128M
